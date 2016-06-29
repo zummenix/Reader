@@ -159,8 +159,9 @@
 
 				if (CGPDFDictionaryGetName(annotationDictionary, "Subtype", &annotationSubtype) == true)
 				{
-					if (strcmp(annotationSubtype, "Link") == 0) // Found annotation subtype of 'Link'
+					if (strcmp(annotationSubtype, "Link") == 0 || strcmp(annotationSubtype, "Widget") == 0)
 					{
+						// Found annotation subtype of 'Link' or 'Widget'
 						ReaderDocumentLink *documentLink = [self linkFromAnnotation:annotationDictionary];
 
 						if (documentLink != nil) [_links insertObject:documentLink atIndex:0]; // Add link
